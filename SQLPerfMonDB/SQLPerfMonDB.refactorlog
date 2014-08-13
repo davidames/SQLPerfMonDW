@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="b6859d9f-96cf-49e5-8a68-4b1494d8e993" ChangeDateTime="08/12/2014 19:41:48">
+    <Property Name="ElementName" Value="[dbo].[DimMachine].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DimMachine]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MachineId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fe0ae8c6-6183-4c04-93b8-c89df9540cd6" ChangeDateTime="08/12/2014 19:42:23">
+    <Property Name="ElementName" Value="[dbo].[DimCounter].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DimCounter]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CounterId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d9aa4034-10bf-4fac-8925-9ef911a097c9" ChangeDateTime="08/12/2014 19:42:56">
+    <Property Name="ElementName" Value="[dbo].[DimCounterInstance].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DimCounterInstance]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CounterInstanceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="81178e56-2b6c-495a-ad9b-b93e932e4c30" ChangeDateTime="08/12/2014 19:43:33">
+    <Property Name="ElementName" Value="[dbo].[DimDate].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DimDate]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DateId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5e68efa1-be92-42ea-b0e6-8366aae557b8" ChangeDateTime="08/12/2014 19:48:33">
+    <Property Name="ElementName" Value="[dbo].[FactPerformanceCounters].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FactPerformanceCounters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerformanceCounterId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="005ac0f3-be7e-4c08-b0e7-2e6c24df4724" ChangeDateTime="08/13/2014 17:25:34">
+    <Property Name="ElementName" Value="[dbo].[EtlSourcesDestinations].[SourcePath]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EtlSourcesDestinations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceServer" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4ba47e09-c2ae-47b5-93cb-ad94b6f8f852" ChangeDateTime="08/13/2014 17:25:38">
+    <Property Name="ElementName" Value="[dbo].[EtlSourcesDestinations].[DestPath]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EtlSourcesDestinations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DestServer" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3f2d2c90-062f-46d8-b001-34330f8c9c98" ChangeDateTime="08/13/2014 17:25:47">
+    <Property Name="ElementName" Value="[dbo].[EtlSourcesDestinations].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EtlSourcesDestinations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EtlSourceDestinationId" />
+  </Operation>
+</Operations>
