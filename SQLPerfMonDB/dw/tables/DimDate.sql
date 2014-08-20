@@ -9,3 +9,8 @@
     [Hour] TINYINT NOT NULL,
 	CONSTRAINT PK_DimDate PRIMARY KEY (DateId)
 )
+GO
+
+CREATE INDEX IX_DimDateTime_FullDateTime_1 ON DimDate(FullDateTime)
+
+

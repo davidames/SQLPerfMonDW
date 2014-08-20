@@ -1,10 +1,9 @@
-﻿CREATE FUNCTION [dbo].[EtlStartingPoints]
+﻿CREATE FUNCTION [dbo].[PerfMonEtlStartingPoints]
 ()
 RETURNS  TABLE
 
 /*
 	Returns the Counter/RecordIndex for where we start the ETL process.  Ie, we will ETL records <= these numbers.
-
 */
 AS
 

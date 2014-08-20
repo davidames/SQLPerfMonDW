@@ -57,13 +57,20 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="dw" />
-    <Folder Include="dw\tables" />
-    <Folder Include="etl" />
-    <Folder Include="etl\tables" />
+    <Folder Include="DW" />
+    <Folder Include="DW\tables" />
+    <Folder Include="ETL" />
+    <Folder Include="ETL\tables" />
     <Folder Include="perfmon" />
     <Folder Include="perfmon\tables" />
-    <Folder Include="etl\udfs" />
+    <Folder Include="ETL\udfs" />
+    <Folder Include="ETL\sprocs" />
+    <Folder Include="SQLVirtualFileStats" />
+    <Folder Include="SQLWaits" />
+    <Folder Include="SQLWaits\sprocs" />
+    <Folder Include="SQLWaits\tables" />
+    <Folder Include="SQLVirtualFileStats\sprocs" />
+    <Folder Include="SQLVirtualFileStats\tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dw\tables\DimMachine.sql" />
@@ -75,8 +82,23 @@
     <Build Include="perfmon\tables\CounterData.sql" />
     <Build Include="perfmon\tables\CounterDetails.sql" />
     <Build Include="perfmon\tables\DisplayToId.sql" />
-    <Build Include="etl\udfs\EtlStartingPoints.sql" />
-    <Build Include="etl\udfs\RecordsToEtl.sql" />
+    <Build Include="etl\udfs\PerfmonEtlStartingPoints.sql" />
+    <Build Include="etl\udfs\PerfMonRecordsToEtl.sql" />
+    <Build Include="etl\sprocs\usp_EtlAllSources.sql" />
+    <Build Include="etl\sprocs\usp_PerfMonEtlPopulateStaging.sql" />
+    <Build Include="etl\tables\PerfmonStaging.sql" />
+    <Build Include="etl\sprocs\usp_PerfMonEtlCleanStaging.sql" />
+    <Build Include="SQLWaits\tables\WaitLatestBaseline.sql" />
+    <Build Include="SQLWaits\tables\Waits.sql" />
+    <Build Include="SQLWaits\tables\WaitSnapshots.sql" />
+    <Build Include="SQLWaits\tables\WaitTypes.sql" />
+    <Build Include="SQLWaits\sprocs\usp_CaptureWaitStats.sql" />
+    <Build Include="SQLWaits\sprocs\usp_PopulateWaitTypes.sql" />
+    <Build Include="SQLVirtualFileStats\tables\FileStats.sql" />
+    <Build Include="SQLVirtualFileStats\tables\FileStatsLatestBaseline.sql" />
+    <Build Include="ETL\sprocs\usp_ClearSourceData.sql" />
+    <Build Include="ETL\sprocs\usp_PerfMonPopulateDwFromStaging.sql" />
+    <Build Include="ETL\sprocs\usp_EtlSingleSource.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="SQLPerfMonDB.refactorlog" />

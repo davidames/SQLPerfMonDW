@@ -1,4 +1,4 @@
-﻿CREATE FUNCTION [dbo].[RecordsToEtl]
+﻿CREATE FUNCTION [dbo].[PerfMonRecordsToEtl]
 (
 		@Guid uniqueidentifier,
 		@MaxCounterID int,
@@ -11,7 +11,8 @@ RETURN
 
 
 SELECT		cdt.MachineName, cdt.CounterName, cdt.InstanceName,
-			cd.CounterValue, cd.CounterDateTime 
+			cd.CounterValue, cd.CounterDateTime,
+			HASHBYTES('MD5', CAST (cd.GUID as varchar(36)) + CAST(cd.CounterID as varchar(10)) + CAST(cd.RecordIndex  as varchar(10))) as SourceHash
       
 FROM		dbo.CounterDetails cdt
 INNER JOIN	dbo.CounterData cd ON cdt.CounterID = cd.CounterID
