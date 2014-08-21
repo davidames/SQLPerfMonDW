@@ -28,7 +28,7 @@ exec	usp_PerfMonEtlPopulateStaging @SourceServerName, @SourceDatabaseName,  @Des
 
 RAISERROR ('Perfmon - Populating Dw from Staging', 0, 1) WITH NOWAIT
 
-SET @Sql =  @SourceServerPath+'dbo.usp_PerfMonPopulateDwFromStaging'
+SET @Sql =  @DestServerPath+'dbo.usp_PerfMonPopulateDwFromStaging'
 	
 EXEC sp_ExecuteSQL @Sql
 
