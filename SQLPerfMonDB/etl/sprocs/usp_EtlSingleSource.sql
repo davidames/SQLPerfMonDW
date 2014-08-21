@@ -1,10 +1,16 @@
 ﻿CREATE PROCEDURE [dbo].[usp_EtlSingleSource]
-	 @SourceServerPath sysname,
-	 @DestServerPath sysname
+		
+		@SourceServerName sysname,
+		@SourceDatabaseName sysname ,
+		@DestServerName  sysname ,
+		@DestDatabaseName sysname
+
 AS
 	
 
-DECLARE @Sql nvarchar(max)
+DECLARE @Sql nvarchar(max),
+		@DestServerPath varchar(1024) = @DestServerName + '.' + @DestDatabaseName + '.',
+		@SourceServerPath varchar(1024) = @SourceServerName + '.' + @SourceDatabaseName + '.'
 
 RAISERROR ('Perfmon - Cleaning Staging Table', 0, 1) WITH NOWAIT
 
@@ -17,7 +23,7 @@ EXEC @Sql
 RAISERROR ('Perfmon - Populating Staging Table', 0, 1) WITH NOWAIT
 
 
-exec	usp_PerfMonEtlPopulateStaging @SourceServerPath, @DestServerPath
+exec	usp_PerfMonEtlPopulateStaging @SourceServerName, @SourceDatabaseName,  @DestServerName, @DestDatabaseName
 
 
 RAISERROR ('Perfmon - Populating Dw from Staging', 0, 1) WITH NOWAIT
@@ -25,6 +31,9 @@ RAISERROR ('Perfmon - Populating Dw from Staging', 0, 1) WITH NOWAIT
 SET @Sql =  @SourceServerPath+'dbo.usp_PerfMonPopulateDwFromStaging'
 	
 EXEC sp_ExecuteSQL @Sql
+
+
+
 
 
 

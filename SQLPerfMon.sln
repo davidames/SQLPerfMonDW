@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQLPerfMonDB", "SQLPerfMonDB\SQLPerfMonDB.sqlproj", "{EC14F00F-D88C-4A51-82D7-56C2AEF3C3A0}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQLPerfMonDb", "SQLPerfMonDB\SQLPerfMonDb.sqlproj", "{EC14F00F-D88C-4A51-82D7-56C2AEF3C3A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

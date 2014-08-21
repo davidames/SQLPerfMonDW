@@ -2,26 +2,26 @@
 	
 AS
 	
-DECLARE @SourceServer sysname, 
-		@DestServer sysname
+DECLARE @SourceServerName sysname,
+		@SourceDatabaseName sysname ,
+		@DestServerName  sysname ,
+		@DestDatabaseName sysname
 
 DECLARE c CURSOR FOR
 
-SELECT SourceServer, DestServer
+SELECT SourceServer, SourceDatabase, DestServer,  DestDatabase
 FROM EtlSourcesDestinations
 
 
 OPEN c
-FETCH c INTO @SourceServer, @DestServer
+FETCH c INTO @SourceServerName,@SourceDatabaseName,  @DestServerName,  @DestDatabaseName
 WHILE @@FETCH_STATUS = 0
 BEGIN
-	SET @SourceServer = ISNULL(@SourceServer + '.', '')
-	SET @DestServer = ISNULL(@DestServer + '.', '')
-
-	exec usp_EtlSingleSource @SourceServer, @DestServer
+	
+	EXEC usp_EtlSingleSource @SourceServerName, @SourceDatabaseName, @DestServerName, @DestDatabaseName
 
 
-FETCH c INTO @SourceServer, @DestServer
+FETCH c INTO @SourceServerName, @SourceDatabaseName, @DestServerName, @DestDatabaseName
 
 
 END

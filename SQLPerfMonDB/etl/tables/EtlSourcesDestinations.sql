@@ -2,5 +2,7 @@
 (
 	[EtlSourceDestinationId] INT NOT NULL identity PRIMARY KEY, 
     [SourceServer] varchar(1024) NULL, 
-    [DestServer] varchar(1024) NULL
+    [DestServer] varchar(1024) NULL, 
+    [DestDatabase] VARCHAR(1024) NULL, 
+    [SourceDatabase] VARCHAR(1024) NULL
 )
