@@ -10,7 +10,7 @@ AS
 RETURN 
 
 
-SELECT		cdt.MachineName, cdt.CounterName, cdt.InstanceName,
+SELECT		cdt.MachineName, cdt.CounterName, cdt.InstanceName, cdt.ObjectName,
 			cd.CounterValue, cd.CounterDateTime,
 			HASHBYTES('MD5', CAST (cd.GUID as varchar(36)) + CAST(cd.CounterID as varchar(10)) + CAST(cd.RecordIndex  as varchar(10))) as SourceHash
       

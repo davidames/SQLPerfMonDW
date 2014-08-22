@@ -17,9 +17,12 @@ OPEN c
 FETCH c INTO @SourceServerName,@SourceDatabaseName,  @DestServerName,  @DestDatabaseName
 WHILE @@FETCH_STATUS = 0
 BEGIN
-	
-	EXEC usp_EtlSingleSource @SourceServerName, @SourceDatabaseName, @DestServerName, @DestDatabaseName
 
+	DECLARE @Msg varchar(1024) = 'Perfmon - Starting ETL from: ' + @SourceServerName + ' to ' + @DestServerName 
+	RAISERROR (@Msg, 0, 1) WITH NOWAIT
+	EXEC usp_EtlSingleSource @SourceServerName, @SourceDatabaseName, @DestServerName, @DestDatabaseName
+	RAISERROR ('------------------------------------------------------------------------', 0, 1) WITH NOWAIT
+	
 
 FETCH c INTO @SourceServerName, @SourceDatabaseName, @DestServerName, @DestDatabaseName
 

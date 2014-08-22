@@ -72,6 +72,7 @@
     <Folder Include="SQLWaits\tables" />
     <Folder Include="SQLVirtualFileStats\sprocs" />
     <Folder Include="SQLVirtualFileStats\tables" />
+    <Folder Include="DW\dataQueries" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dw\tables\DimMachine.sql" />
@@ -100,6 +101,9 @@
     <Build Include="ETL\sprocs\usp_ClearSourceData.sql" />
     <Build Include="ETL\sprocs\usp_PerfMonPopulateDwFromStaging.sql" />
     <Build Include="ETL\sprocs\usp_EtlSingleSource.sql" />
+    <Build Include="DW\tables\KPIConfiguration.sql" />
+    <Build Include="DW\dataQueries\udf_PerfMonPerMinute.sql" />
+    <Build Include="DW\tables\DimCounterType.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="SQLPerfMonDB.refactorlog" />

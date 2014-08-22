@@ -7,7 +7,8 @@
 	CounterValue FLOAT (53) NOT NULL,	
 	CounterDateTime DATETIME NOT NULL, 
     [SourceHash] BINARY(16) NOT NULL,
-	CONSTRAINT PK_PerfMonStaging PRIMARY KEY NONCLUSTERED (Id)	
+	[ObjectName] VARCHAR(1024) NULL, 
+    CONSTRAINT PK_PerfMonStaging PRIMARY KEY NONCLUSTERED (Id)	
 )
 
 GO

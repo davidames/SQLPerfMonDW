@@ -23,6 +23,16 @@ LEFT JOIN DimCounter c ON s.CounterName = c.CounterName
 WHERE c.CounterId IS NULL
 
 
+INSERT DimCounterType
+(
+	CounterTypeName
+)
+SELECT DISTINCT s.ObjectName
+FROM PerfmonStaging s
+LEFT JOIN DimCounterType ct ON s.ObjectName = ct.CounterTypeName
+WHERE ct.CounterTypeId IS NULL
+
+
 
 INSERT DimCounterInstance
 (
@@ -63,6 +73,7 @@ INSERT FactPerformanceCounters
 	MachineId,
 	CounterId,
 	CounterInstanceId,
+	CounterTypeId,
 	Value,
 	SourceHash
 )
@@ -70,6 +81,7 @@ SELECT 	d.DateId,
 		m.MachineId,
 		c.CounterId,
 		ci.CounterInstanceId,
+		ct.CounterTypeId,
 		s.CounterValue,
 		s.SourceHash
 
@@ -77,7 +89,9 @@ FROM	dbo.PerfmonStaging s
 INNER JOIN DimDate d ON s.CounterDateTime = d.FullDateTime
 INNER JOIN DimMachine m ON s.MachineName = m.MachineName
 INNER JOIN DimCounter c ON s.CounterName = c.CounterName
-INNER JOIN DimCounterInstance ci ON s.InstanceName = ci.CounterInstanceName
+LEFT JOIN DimCounterInstance ci ON s.InstanceName = ci.CounterInstanceName
+LEFT JOIN DimCounterType ct ON s.ObjectName = ct.CounterTypeName
+
 LEFT JOIN FactPerformanceCounters pc ON s.SourceHash = pc.SourceHash
 
 WHERE pc.SourceHash IS NULL --Duplicate Checking

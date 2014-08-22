@@ -56,4 +56,39 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="EtlSourceDestinationId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="929e4513-ef88-4db9-a4fe-edd9328c5732" ChangeDateTime="08/21/2014 07:35:46">
+    <Property Name="ElementName" Value="[dbo].[KPIConfiguration].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[KPIConfiguration]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="KPIConfigurationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d55c065b-7fed-43dc-9fc1-bdaea4778f1b" ChangeDateTime="08/21/2014 18:13:26">
+    <Property Name="ElementName" Value="[dbo].[KPIConfiguration].[CounterId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[KPIConfiguration]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CounterName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8a5a40d8-5cdf-435d-b684-191ee7760231" ChangeDateTime="08/21/2014 18:13:29">
+    <Property Name="ElementName" Value="[dbo].[KPIConfiguration].[CounterInstanceId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[KPIConfiguration]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CounterInstanceName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="310d904a-ad69-45df-b3ef-210a06ba408a" ChangeDateTime="08/22/2014 19:28:30">
+    <Property Name="ElementName" Value="[dbo].[DimCounterTypes].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DimCounterTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CounterTypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9bdc23d4-8fa1-478a-a5b4-08dd9ff3860f" ChangeDateTime="08/22/2014 19:51:57">
+    <Property Name="ElementName" Value="[dbo].[DimCounterType].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DimCounterType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CounterTypeName" />
+  </Operation>
 </Operations>

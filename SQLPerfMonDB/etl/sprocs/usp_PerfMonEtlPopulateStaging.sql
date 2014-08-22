@@ -55,15 +55,17 @@ BEGIN
 		MachineName,		
 		CounterName,		
 		InstanceName,	
+		ObjectName,
 		CounterValue,	
 		CounterDateTime,
-		SourceHash	
+		SourceHash
 	)
 
 	SELECT 
 		MachineName,		
 		CounterName,		
 		InstanceName,	
+		ObjectName,
 		CounterValue,	
 		(CONVERT([datetime],left([CounterDateTime],(19)),(120))),
 		SourceHash	

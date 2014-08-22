@@ -13,4 +13,8 @@ GO
 
 CREATE INDEX IX_DimDateTime_FullDateTime_1 ON DimDate(FullDateTime)
 
+GO
 
+CREATE NONCLUSTERED INDEX IX_DimDate_DateNoTime_1
+ON [dbo].[DimDate] ([DateNoTime])
+INCLUDE ([DateId],[DateToTheHour],[DateToTheMinute],[DayOfWeek],[Hour])
