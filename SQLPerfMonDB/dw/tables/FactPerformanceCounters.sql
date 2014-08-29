@@ -19,5 +19,5 @@ GO
 CREATE NONCLUSTERED INDEX IX_FactPerformanceCounters_DateId_1
 ON [dbo].[FactPerformanceCounters] ([DateId])
 
-INCLUDE ([MachineId],[CounterId],[CounterInstanceId],[Value])
+INCLUDE ([MachineId],[CounterId],[CounterInstanceId],[Value], CounterTypeId)
 

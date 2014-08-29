@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSets>
+    <DataSet Name="dsMachines">
+      <SharedDataSet>
+        <SharedDataSetReference>dsMachines</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="MachineId">
+          <DataField>MachineId</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="MachineName">
+          <DataField>MachineName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MachineEnviroment">
+          <DataField>MachineEnviroment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MachineType">
+          <DataField>MachineType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsCounters">
+      <SharedDataSet>
+        <SharedDataSetReference>dsCounters</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="CounterId">
+          <DataField>CounterId</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="CounterName">
+          <DataField>CounterName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsCounterInstances">
+      <SharedDataSet>
+        <SharedDataSetReference>dsCounterInstances</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="CounterInstanceId">
+          <DataField>CounterInstanceId</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="CounterInstanceName">
+          <DataField>CounterInstanceName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsPerfMonCountersPerMinuteByKey">
+      <SharedDataSet>
+        <SharedDataSetReference>dsPerfMonCountersPerMinuteByKey</SharedDataSetReference>
+        <QueryParameters>
+          <QueryParameter Name="@daysOld">
+            <Value>=Parameters!daysOld.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@MachineId">
+            <Value>=Parameters!MachineId.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@CounterId">
+            <Value>=Parameters!CounterId.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@CounterInstanceId">
+            <Value>=Parameters!CounterInstanceId.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="DateToTheMinute">
+          <DataField>DateToTheMinute</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DateToTheHour">
+          <DataField>DateToTheHour</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DateNoTime">
+          <DataField>DateNoTime</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DayOfWeek">
+          <DataField>DayOfWeek</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="Hour">
+          <DataField>Hour</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="CounterInstanceName">
+          <DataField>CounterInstanceName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AvgValue">
+          <DataField>AvgValue</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="MaxValue">
+          <DataField>MaxValue</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="MinValue">
+          <DataField>MinValue</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Subreport Name="Subreport1">
+            <ReportName>subDiskReadsAndWritesPerSecond</ReportName>
+            <Parameters>
+              <Parameter Name="MachineName">
+                <Value>=Parameters!MachineName.Value</Value>
+              </Parameter>
+              <Parameter Name="CounterName">
+                <Value>=Parameters!CounterName.Value</Value>
+              </Parameter>
+              <Parameter Name="daysOld">
+                <Value>=Parameters!daysOld.Value</Value>
+              </Parameter>
+              <Parameter Name="GreenLineKpi">
+                <Value>=Parameters!GreenLineKpi.Value</Value>
+              </Parameter>
+              <Parameter Name="OrangeLineKpi">
+                <Value>=Parameters!OrangeLineKpi.Value</Value>
+              </Parameter>
+              <Parameter Name="RedLineKpi">
+                <Value>=Parameters!RedLineKpi.Value</Value>
+              </Parameter>
+              <Parameter Name="CounterInstanceName">
+                <Value>=Parameters!CounterInstanceName.Value</Value>
+              </Parameter>
+              <Parameter Name="CounterId">
+                <Value>=Parameters!CounterId.Value</Value>
+              </Parameter>
+              <Parameter Name="MachineId">
+                <Value>=Parameters!MachineId.Value</Value>
+              </Parameter>
+              <Parameter Name="CounterInstanceId">
+                <Value>=Parameters!CounterInstanceId.Value</Value>
+              </Parameter>
+            </Parameters>
+            <Height>7.5cm</Height>
+            <Width>9.5cm</Width>
+            <Visibility>
+              <Hidden>=IIF(Parameters!SubReportName.Value = "subDiskReadsAndWritesPerSecond", false, true)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="Subreport2">
+            <ReportName>subCounterDataWithInstanceSeries</ReportName>
+            <Parameters>
+              <Parameter Name="MachineName">
+                <Value>=Parameters!MachineName.Value</Value>
+              </Parameter>
+              <Parameter Name="CounterName">
+                <Value>=Parameters!CounterName.Value</Value>
+              </Parameter>
+              <Parameter Name="daysOld">
+                <Value>=Parameters!daysOld.Value</Value>
+              </Parameter>
+              <Parameter Name="GreenLineKpi">
+                <Value>=Parameters!GreenLineKpi.Value</Value>
+              </Parameter>
+              <Parameter Name="OrangeLineKpi">
+                <Value>=Parameters!OrangeLineKpi.Value</Value>
+              </Parameter>
+              <Parameter Name="RedLineKpi">
+                <Value>=Parameters!RedLineKpi.Value</Value>
+              </Parameter>
+              <Parameter Name="CounterInstanceName">
+                <Value>=Parameters!CounterInstanceName.Value</Value>
+              </Parameter>
+              <Parameter Name="CounterId">
+                <Value>=Parameters!CounterId.Value</Value>
+              </Parameter>
+              <Parameter Name="MachineId">
+                <Value>=Parameters!MachineId.Value</Value>
+              </Parameter>
+              <Parameter Name="CounterInstanceId">
+                <Value>=Parameters!CounterInstanceId.Value</Value>
+              </Parameter>
+            </Parameters>
+            <Height>7.5cm</Height>
+            <Width>9.5cm</Width>
+            <ZIndex>1</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(Parameters!SubReportName.Value = "subCounterDataWithInstanceSeries", false, true)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+        </ReportItems>
+        <Height>2.96317in</Height>
+        <Style />
+      </Body>
+      <Width>3.76099in</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="MachineName">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        </Values>
+      </DefaultValue>
+      <Prompt>Machine Name</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsMachines</DataSetName>
+          <ValueField>MachineName</ValueField>
+          <LabelField>MachineName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="CounterName">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        </Values>
+      </DefaultValue>
+      <Prompt>Counter Name</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsCounters</DataSetName>
+          <ValueField>CounterName</ValueField>
+          <LabelField>CounterName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="daysOld">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>5</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>days Old</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>1</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2</Value>
+            <Label>2</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>3</Value>
+            <Label>3</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>4</Value>
+            <Label>4</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>5</Value>
+            <Label>5</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>6</Value>
+            <Label>6</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>7</Value>
+            <Label>7</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="GreenLineKpi">
+      <DataType>Float</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>GreenLineKpi</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="OrangeLineKpi">
+      <DataType>Float</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>OrangeLineKpi</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="RedLineKpi">
+      <DataType>Float</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>RedLineKpi</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CounterInstanceName">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>CounterInstanceName</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="MachineId">
+      <DataType>Integer</DataType>
+      <Prompt>MachineId</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CounterId">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>CounterId</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CounterInstanceId">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>CounterInstanceId</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SubReportName">
+      <DataType>String</DataType>
+      <Prompt>SubReportName</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>350046ae-1c95-4b3a-a0b8-776479ec3e8b</rd:ReportID>
+</Report>

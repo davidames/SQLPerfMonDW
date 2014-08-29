@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>SQLPerfMonDB</DataSourceReference>
+      <CommandText>WITH cteMacines AS 
+(
+	SELECT m.MachineName, m.MachineId, ROW_NUMBER() OVER (ORDER BY  m.MachineName) as rowNum
+	FROM	DimMachine m
+
+),
+cteMachineCols AS
+(
+SELECT	m1.MachineName as Col1MachineName, m1.MachineId as Col1MachineId,
+		m2.MachineName as Col2MachineName, m2.MachineId as Col2MachineId
+FROM cteMacines m1  
+INNER JOIN cteMacines m2 
+ON m1.rowNum %2 = 1
+AND m2.rowNum = m1.rowNum + 1
+)
+
+
+SELECT s.Name as SectionName,
+		c.CounterDescription, c.SubReportName,
+		dc.CounterId, dc.CounterName,
+		dci.CounterInstanceId, dci.CounterInstanceName,
+		mc.Col1MachineId, mc.Col1MachineName,
+		mc.Col2MachineId, mc.Col2MachineName,
+		kpi1.GreenLevel as col1GreenLevel, kpi1.Orangelevel as Col1OrangeLevel, kpi1.RedLine as Col1Redlevel,
+		kpi2.GreenLevel as col2GreenLevel, kpi2.Orangelevel as Col2OrangeLevel, kpi2.RedLine as Col2Redlevel
+		
+		
+FROM PerfMonReports r
+INNER JOIN PerfMonReportSections s on r.PerfMonReportId = s.PerfMonReportID
+INNER JOIN PerfMonReportCounters c ON s.PerfMonReportSectionID = c.PerfMonReportSectionID
+LEFT JOIN DimCounter dc ON c.CounterName = dc.CounterName
+LEFT JOIN DimCounterInstance dci ON c.CounterInstanceName = dci.CounterInstanceName
+CROSS JOIN cteMachineCols mc
+
+OUTER APPLY 
+(
+	SELECT TOP 1 * 
+	FROM [KPIConfiguration] k1
+	WHERE k1.CounterName = c.CounterName
+		AND
+		(
+		 k1.MachineName IS NULL OR 
+		 k1.MachineName = mc.Col1MachineName
+		 )
+		AND
+		(
+		 k1.CounterInstanceName IS NULL OR 
+		 k1.CounterInstanceName = c.CounterInstanceName
+		 )
+	ORDER BY k1.MachineName DESC, k1.CounterInstanceName DESC
+) as kpi1
+
+
+OUTER APPLY 
+(
+	SELECT TOP 1 * 
+	FROM [KPIConfiguration] k2
+	WHERE k2.CounterName = c.CounterName
+		AND
+		(
+		 k2.MachineName IS NULL OR 
+		 k2.MachineName = mc.Col2MachineName
+		 )
+		AND
+		(
+		 k2.CounterInstanceName IS NULL OR 
+		 k2.CounterInstanceName = c.CounterInstanceName
+		 )
+	ORDER BY k2.MachineName DESC, k2.CounterInstanceName DESC
+) as kpi2
+
+
+ORDER BY SectionName, dc.CounterName, mc.Col1MachineName</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="SectionName">
+        <DataField>SectionName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CounterDescription">
+        <DataField>CounterDescription</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SubReportName">
+        <DataField>SubReportName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CounterId">
+        <DataField>CounterId</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="CounterName">
+        <DataField>CounterName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CounterInstanceId">
+        <DataField>CounterInstanceId</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="CounterInstanceName">
+        <DataField>CounterInstanceName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Col1MachineId">
+        <DataField>Col1MachineId</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="Col1MachineName">
+        <DataField>Col1MachineName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Col2MachineId">
+        <DataField>Col2MachineId</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="Col2MachineName">
+        <DataField>Col2MachineName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="col1GreenLevel">
+        <DataField>col1GreenLevel</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="Col1OrangeLevel">
+        <DataField>Col1OrangeLevel</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="Col1Redlevel">
+        <DataField>Col1Redlevel</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="col2GreenLevel">
+        <DataField>col2GreenLevel</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="Col2OrangeLevel">
+        <DataField>Col2OrangeLevel</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="Col2Redlevel">
+        <DataField>Col2Redlevel</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>SQLPerfMonDB</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@daysOld">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Int32</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@MachineId">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Int32</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT		d.DateToTheMinute, d.DateToTheHour, d.DateNoTime, d.DayOfWeek, d.Hour,	c.CounterName,
+			ci.CounterInstanceName, 
+			avg(pc.Value) as AvgValue, max(pc.value) as MaxValue, min(pc.value) as MinValue
+FROM		FactPerformanceCounters pc
+INNER JOIN	DimDate d ON pc.DateId = d.DateId
+INNER JOIN	DimCounter c ON pc.CounterId = c.CounterId
+INNER JOIN	DimCounterInstance ci ON pc.CounterInstanceId = ci.CounterInstanceId
+WHERE		d.DateNoTime &gt; = DateAdd(day,-@daysOld,CAST(getdate() as Date))
+			AND pc.MachineId = @MachineId
+			
+			 AND ci.CounterInstanceName &lt;&gt; '_Total'
+			 AND c.CounterName IN ('Disk Reads/sec','Disk Writes/sec')
+
+GROUP BY	d.DateToTheMinute, d.DateToTheHour, d.DateNoTime, d.DayOfWeek, d.Hour,c.CounterName,
+			ci.CounterInstanceName
+
+ORDER BY d.DateToTheMinute</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="DateToTheMinute">
+        <DataField>DateToTheMinute</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="DateToTheHour">
+        <DataField>DateToTheHour</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="DateNoTime">
+        <DataField>DateNoTime</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="DayOfWeek">
+        <DataField>DayOfWeek</DataField>
+        <rd:TypeName>System.Byte</rd:TypeName>
+      </Field>
+      <Field Name="Hour">
+        <DataField>Hour</DataField>
+        <rd:TypeName>System.Byte</rd:TypeName>
+      </Field>
+      <Field Name="CounterName">
+        <DataField>CounterName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CounterInstanceName">
+        <DataField>CounterInstanceName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AvgValue">
+        <DataField>AvgValue</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="MaxValue">
+        <DataField>MaxValue</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="MinValue">
+        <DataField>MinValue</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

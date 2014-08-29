@@ -91,4 +91,88 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="CounterTypeName" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="736fb437-a0f5-4299-8d04-da5e5986f13d" ChangeDateTime="08/25/2014 19:30:39">
+    <Property Name="ElementName" Value="[dbo].[PerfMonReports].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PerfMonReports]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerfMonReporId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="909b036c-d035-4eb2-921e-9aeca1af65b9" ChangeDateTime="08/25/2014 19:31:50">
+    <Property Name="ElementName" Value="[dbo].[PerfMonReports].[PerfMonReporId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PerfMonReports]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerfMonReportId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cdeef708-f941-40d7-a17f-04c091307bae" ChangeDateTime="08/26/2014 16:59:30">
+    <Property Name="ElementName" Value="[dbo].[ReportSections].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ReportSections]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerfMonReportSectionID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="134153ba-3431-414b-888f-b36336d7365a" ChangeDateTime="08/26/2014 16:59:38">
+    <Property Name="ElementName" Value="[dbo].[ReportSections].[PerfMonReporID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ReportSections]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerfMonReportID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="47138c63-3a78-4888-bfe9-2575cfcbe725" ChangeDateTime="08/26/2014 17:00:08">
+    <Property Name="ElementName" Value="[dbo].[ReportSections].[PerfMonReportSectionID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ReportSections]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerfMonReportSectionId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="24ec820a-b444-4c54-9972-00f9a5372fc0" ChangeDateTime="08/26/2014 17:00:09">
+    <Property Name="ElementName" Value="[dbo].[ReportSections].[PerfMonReportID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ReportSections]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerfMonReportId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6fe7bc22-295e-4812-be38-2cb0c493875a" ChangeDateTime="08/26/2014 17:09:42">
+    <Property Name="ElementName" Value="[dbo].[PerfMonReportCounters].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PerfMonReportCounters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerfMonReporCounterID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f00ae979-cb0a-481e-8411-18a1be00d656" ChangeDateTime="08/26/2014 17:09:52">
+    <Property Name="ElementName" Value="[dbo].[PerfMonReportCounters].[PerfMonReporCounterID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PerfMonReportCounters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerfMonReportCounterID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="266bc424-5aea-462d-b1af-870b3f93c6cd" ChangeDateTime="08/26/2014 17:10:00">
+    <Property Name="ElementName" Value="[dbo].[PerfMonReportCounters].[PerfMo]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PerfMonReportCounters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerfMonReportSectionID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a8743070-e6bd-4fb8-9732-f24480bd8a3e" ChangeDateTime="08/26/2014 17:11:49">
+    <Property Name="ElementName" Value="[dbo].[PerfMonReportCounterMachines].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PerfMonReportCounterMachines]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PerfMonReportCounterMachineId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="21fcc566-b8e4-40f4-9472-0c2204ad5578" ChangeDateTime="08/26/2014 17:13:05">
+    <Property Name="ElementName" Value="[dbo].[KPIConfiguration].[GreenMaxLevel]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[KPIConfiguration]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GreenLevel" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8c5f7f29-c2fc-4e91-9cf2-d478ff66fddf" ChangeDateTime="08/26/2014 17:13:09">
+    <Property Name="ElementName" Value="[dbo].[KPIConfiguration].[OrangeMaxLevel]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[KPIConfiguration]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Orangelevel" />
+  </Operation>
 </Operations>
