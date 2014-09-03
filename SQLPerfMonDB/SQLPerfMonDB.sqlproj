@@ -81,7 +81,7 @@
     <Build Include="dw\tables\DimCounterInstance.sql" />
     <Build Include="dw\tables\DimDate.sql" />
     <Build Include="dw\tables\FactPerformanceCounters.sql" />
-    <Build Include="etl\tables\EtlSourcesDestinations.sql" />
+    <Build Include="ETL\tables\EtlActions.sql" />
     <Build Include="perfmon\tables\CounterData.sql" />
     <Build Include="perfmon\tables\CounterDetails.sql" />
     <Build Include="perfmon\tables\DisplayToId.sql" />
@@ -109,6 +109,8 @@
     <Build Include="Reporting\PerfMonReportSections.sql" />
     <Build Include="Reporting\PerfMonReportCounters.sql" />
     <Build Include="DW\dataQueries\udf_PerfMonPerMinuteByKey.sql" />
+    <Build Include="ETL\tables\EtlExecutions.sql" />
+    <Build Include="ETL\tables\EtlActionExecutions.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="SQLPerfMonDB.refactorlog" />

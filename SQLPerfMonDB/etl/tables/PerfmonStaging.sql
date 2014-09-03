@@ -8,6 +8,7 @@
 	CounterDateTime DATETIME NOT NULL, 
     [SourceHash] BINARY(16) NOT NULL,
 	[ObjectName] VARCHAR(1024) NULL, 
+    [EtlActionExecutionId] UNIQUEIDENTIFIER NULL, 
     CONSTRAINT PK_PerfMonStaging PRIMARY KEY NONCLUSTERED (Id)	
 )
 
