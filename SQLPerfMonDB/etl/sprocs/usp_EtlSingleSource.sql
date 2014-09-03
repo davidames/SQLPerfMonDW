@@ -3,7 +3,8 @@
 		@SourceServerName sysname,
 		@SourceDatabaseName sysname ,
 		@DestServerName  sysname ,
-		@DestDatabaseName sysname
+		@DestDatabaseName sysname,
+		@EtlActionExecutionId uniqueidentifier
 
 AS
 	

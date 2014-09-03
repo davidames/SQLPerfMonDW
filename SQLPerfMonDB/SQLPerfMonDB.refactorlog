@@ -175,4 +175,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Orangelevel" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="4784ef4a-e020-4fa3-987a-e5f433c94e12" ChangeDateTime="09/01/2014 19:32:16">
+    <Property Name="ElementName" Value="[dbo].[EtlSourcesDestinations].[EtlSourceDestinationId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EtlSourcesDestinations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EtlActions" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e0b54ce7-9c3d-458b-b9be-e759af66b620" ChangeDateTime="09/01/2014 19:34:04">
+    <Property Name="ElementName" Value="[dbo].[EtlActionExecutions].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EtlActionExecutions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EtlActionExecutionId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4445906d-cd4a-4d7d-ae68-9bcb084175f0" ChangeDateTime="09/01/2014 19:34:26">
+    <Property Name="ElementName" Value="[dbo].[EtlActionExecutions].[EtlExecutionid]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EtlActionExecutions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EtlExecutionId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="010ad603-667a-49a4-a1c2-7d58c0fe954e" ChangeDateTime="09/01/2014 19:37:06">
+    <Property Name="ElementName" Value="[dbo].[EtlExecutions].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EtlExecutions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EtlExecutionId" />
+  </Operation>
 </Operations>
