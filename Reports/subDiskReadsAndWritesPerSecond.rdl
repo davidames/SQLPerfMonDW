@@ -2,29 +2,6 @@
 <Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
   <AutoRefresh>0</AutoRefresh>
   <DataSets>
-    <DataSet Name="dsMachines">
-      <SharedDataSet>
-        <SharedDataSetReference>dsMachines</SharedDataSetReference>
-      </SharedDataSet>
-      <Fields>
-        <Field Name="MachineId">
-          <DataField>MachineId</DataField>
-          <rd:TypeName>System.Int16</rd:TypeName>
-        </Field>
-        <Field Name="MachineName">
-          <DataField>MachineName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="MachineEnviroment">
-          <DataField>MachineEnviroment</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="MachineType">
-          <DataField>MachineType</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
     <DataSet Name="dsDiskReadsAndWritesPerSecond">
       <SharedDataSet>
         <SharedDataSetReference>dsDiskReadsAndWritesPerSecond</SharedDataSetReference>
@@ -507,23 +484,6 @@
         </Values>
       </DefaultValue>
       <Prompt>Machine Name</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>dsMachines</DataSetName>
-          <ValueField>MachineName</ValueField>
-          <LabelField>MachineName</LabelField>
-        </DataSetReference>
-      </ValidValues>
-    </ReportParameter>
-    <ReportParameter Name="CounterName">
-      <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <DefaultValue>
-        <Values>
-          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
-        </Values>
-      </DefaultValue>
-      <Prompt>Counter Name</Prompt>
     </ReportParameter>
     <ReportParameter Name="daysOld">
       <DataType>Integer</DataType>
@@ -581,24 +541,9 @@
       <Nullable>true</Nullable>
       <Prompt>RedLineKpi</Prompt>
     </ReportParameter>
-    <ReportParameter Name="CounterInstanceName">
-      <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <Prompt>CounterInstanceName</Prompt>
-    </ReportParameter>
     <ReportParameter Name="MachineId">
       <DataType>Integer</DataType>
       <Prompt>MachineId</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="CounterId">
-      <DataType>Integer</DataType>
-      <Nullable>true</Nullable>
-      <Prompt>CounterId</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="CounterInstanceId">
-      <DataType>Integer</DataType>
-      <Nullable>true</Nullable>
-      <Prompt>CounterInstanceId</Prompt>
     </ReportParameter>
   </ReportParameters>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>

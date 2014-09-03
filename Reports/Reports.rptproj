@@ -21,6 +21,10 @@
       <FullPath>dsCounterTypes.rsd</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>dsDiskReadsAndWritesPerSecond.rsd</Name>
+      <FullPath>dsDiskReadsAndWritesPerSecond.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>dsMachines.rsd</Name>
       <FullPath>dsMachines.rsd</FullPath>
     </ProjectItem>
@@ -36,10 +40,6 @@
       <Name>dsReportConfiguration.rsd</Name>
       <FullPath>dsReportConfiguration.rsd</FullPath>
     </ProjectItem>
-    <ProjectItem>
-      <Name>dsDiskReadsAndWritesPerSecond.rsd</Name>
-      <FullPath>dsDiskReadsAndWritesPerSecond.rsd</FullPath>
-    </ProjectItem>
   </DataSets>
   <Reports>
     <ProjectItem>
@@ -51,16 +51,16 @@
       <FullPath>PerfMonReport.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>PerfMonReport_Test.rdl</Name>
+      <FullPath>PerfMonReport_Test.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>subCounterDataWithInstanceSeries.rdl</Name>
       <FullPath>subCounterDataWithInstanceSeries.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>subDiskReadsAndWritesPerSecond.rdl</Name>
       <FullPath>subDiskReadsAndWritesPerSecond.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>PerfMonReport_Test.rdl</Name>
-      <FullPath>PerfMonReport_Test.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SubDynamicReportSwitcher.rdl</Name>
@@ -74,7 +74,8 @@
       <Options>
         <OutputPath>bin\Debug</OutputPath>
         <TargetServerVersion>SSRS2008R2</TargetServerVersion>
-        <TargetFolder>Reports</TargetFolder>
+        <TargetServerURL>http://todd2/ReportServer_SQL2012</TargetServerURL>
+        <TargetFolder>SQLPerfMon</TargetFolder>
         <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
         <TargetDatasetFolder>Datasets</TargetDatasetFolder>
         <TargetReportPartFolder>Report Parts</TargetReportPartFolder>

@@ -123,9 +123,6 @@
               <Parameter Name="MachineName">
                 <Value>=Parameters!MachineName.Value</Value>
               </Parameter>
-              <Parameter Name="CounterName">
-                <Value>=Parameters!CounterName.Value</Value>
-              </Parameter>
               <Parameter Name="daysOld">
                 <Value>=Parameters!daysOld.Value</Value>
               </Parameter>
@@ -138,17 +135,8 @@
               <Parameter Name="RedLineKpi">
                 <Value>=Parameters!RedLineKpi.Value</Value>
               </Parameter>
-              <Parameter Name="CounterInstanceName">
-                <Value>=Parameters!CounterInstanceName.Value</Value>
-              </Parameter>
-              <Parameter Name="CounterId">
-                <Value>=Parameters!CounterId.Value</Value>
-              </Parameter>
               <Parameter Name="MachineId">
                 <Value>=Parameters!MachineId.Value</Value>
-              </Parameter>
-              <Parameter Name="CounterInstanceId">
-                <Value>=Parameters!CounterInstanceId.Value</Value>
               </Parameter>
             </Parameters>
             <Height>7.5cm</Height>
@@ -196,6 +184,8 @@
                 <Value>=Parameters!CounterInstanceId.Value</Value>
               </Parameter>
             </Parameters>
+            <Top>1.16417cm</Top>
+            <Left>4.94771cm</Left>
             <Height>7.5cm</Height>
             <Width>9.5cm</Width>
             <ZIndex>1</ZIndex>
@@ -209,10 +199,10 @@
             </Style>
           </Subreport>
         </ReportItems>
-        <Height>2.96317in</Height>
+        <Height>3.41109in</Height>
         <Style />
       </Body>
-      <Width>3.76099in</Width>
+      <Width>5.68807in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
