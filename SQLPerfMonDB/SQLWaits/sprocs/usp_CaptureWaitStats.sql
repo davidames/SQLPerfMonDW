@@ -37,7 +37,7 @@ SELECT @CurrentWaitSnapshotId = SCOPE_IDENTITY()
 (
 	SELECT		wt.WaitTypeId, ws.waiting_tasks_count, ws.wait_time_ms, ws.signal_wait_time_ms
 	FROM		sys.dm_os_wait_stats ws
-	INNER JOIN	WaitTypes wt ON ws.wait_type = wt.Name
+	INNER JOIN	WaitTypes wt ON ws.wait_type COLLATE DATABASE_DEFAULT = wt.Name COLLATE DATABASE_DEFAULT
 	WHERE		wt.IsMonitored = 1 /* Filter out the ones we don't care about*/
 )
 

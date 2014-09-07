@@ -2,7 +2,7 @@
 <RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SQLPerfMonDB">
   <ConnectionProperties>
     <Extension>SQL</Extension>
-    <ConnectString>Data Source=Gloria;Initial Catalog=SQLPerfMonDB</ConnectString>
+    <ConnectString>Data Source=192.168.1.244;Initial Catalog=SQLPerfMon_NTISProd1</ConnectString>
   </ConnectionProperties>
   <DataSourceID>a3ce6de7-6302-4521-818e-4322063ea397</DataSourceID>
 </RptDataSource>

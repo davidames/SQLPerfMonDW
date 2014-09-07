@@ -2,9 +2,10 @@
 	
 AS
 	
+	
 DECLARE @SourceServerName sysname,
-		@SourceDatabaseName sysname ,
-		@DestServerName  sysname ,
+		@SourceDatabaseName sysname,
+		@DestServerName  sysname,
 		@DestDatabaseName sysname,
 		@EtlExecutionId uniqueidentifier = newid(),
 		@EtlActionExecutionId uniqueidentifier,
@@ -27,7 +28,7 @@ DECLARE c CURSOR FOR
 
 SELECT SourceServer, SourceDatabase, DestServer,  DestDatabase, EtlActionId
 FROM EtlActions
-
+WHERE IsActive = 1
 
 OPEN c
 FETCH c INTO @SourceServerName,@SourceDatabaseName,  @DestServerName,  @DestDatabaseName, @EtlActionId
@@ -36,7 +37,7 @@ BEGIN
 
 	
 	DECLARE @Msg varchar(1024) = 'Perfmon - Starting ETL from: ' + @SourceServerName + ' to ' + @DestServerName 
-	RAISERROR (@Msg, 0, 1) WITH NOWAIT
+	EXEC usp_LogMessage @Msg
 	
 	SET @EtlActionExecutionId = newid()
 
@@ -56,23 +57,36 @@ BEGIN
 		SYSDATETIMEOFFSET()
 
 	)
-	EXEC usp_EtlSingleSource @SourceServerName, @SourceDatabaseName, @DestServerName, @DestDatabaseName, @EtlActionExecutionId
+
+	EXEC usp_LogMessage 'Calling usp_EtlSingleSource'
+	BEGIN TRY
+		EXEC usp_EtlSingleSource @SourceServerName, @SourceDatabaseName, @DestServerName, @DestDatabaseName, @EtlActionExecutionId
+	END TRY
+
+	BEGIN CATCH 
+		SET @Msg = 'Error: ' + ERROR_MESSAGE() + ' Severity: ' + CAST(ERROR_SEVERITY() as varchar(10)) + ' State: ' + CAST(ERROR_STATE() as varchar(10)) + ' Line:' + CAST(ERROR_LINE() as varchar(10)) + ' ' + ISNULL(ERROR_PROCEDURE(),'-')
+		UPDATE EtlActionExecutions
+		SET ErrorDetails = @Msg
+		WHERE EtlActionExecutionId = @EtlActionExecutionId
+
+		EXEC usp_LogMessage @Msg
+	END CATCH
 
 	UPDATE EtlActionExecutions
 	SET CompletedOn = SYSDATETIMEOFFSET()
 	WHERE EtlActionExecutionId = @EtlActionExecutionId
 
-	RAISERROR ('------------------------------------------------------------------------', 0, 1) WITH NOWAIT
+	EXEC usp_LogMessage '------------------------------------------------------------------------'
 	
 
-FETCH c INTO @SourceServerName, @SourceDatabaseName, @DestServerName, @DestDatabaseName, @EtlActionId
+	FETCH c INTO @SourceServerName, @SourceDatabaseName, @DestServerName, @DestDatabaseName, @EtlActionId
 
 
 END
 
-UPDATE EtlExecutions
-SET CompletedOn = SYSDATETIMEOFFSET()
-WHERE EtlExecutionId = @EtlActionExecutionId
+UPDATE	EtlExecutions
+SET		CompletedOn = SYSDATETIMEOFFSET()
+WHERE	EtlExecutionId = @EtlActionExecutionId
 
 
 

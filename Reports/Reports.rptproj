@@ -66,6 +66,18 @@
       <Name>SubDynamicReportSwitcher.rdl</Name>
       <FullPath>SubDynamicReportSwitcher.rdl</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>DimMachine.rdl</Name>
+      <FullPath>DimMachine.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ServerConfiguration.rdl</Name>
+      <FullPath>ServerConfiguration.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Copy of PerfMonReport.rdl</Name>
+      <FullPath>Copy of PerfMonReport.rdl</FullPath>
+    </ProjectItem>
   </Reports>
   <Configurations>
     <Configuration>

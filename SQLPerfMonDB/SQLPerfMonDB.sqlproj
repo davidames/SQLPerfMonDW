@@ -74,6 +74,8 @@
     <Folder Include="SQLVirtualFileStats\tables" />
     <Folder Include="DW\dataQueries" />
     <Folder Include="Reporting" />
+    <Folder Include="general" />
+    <Folder Include="Reporting\initalDataScripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dw\tables\DimMachine.sql" />
@@ -111,6 +113,9 @@
     <Build Include="DW\dataQueries\udf_PerfMonPerMinuteByKey.sql" />
     <Build Include="ETL\tables\EtlExecutions.sql" />
     <Build Include="ETL\tables\EtlActionExecutions.sql" />
+    <Build Include="general\usp_LogMessage.sql" />
+    <Build Include="general\usp_LogDynamicSql.sql" />
+    <Build Include="Reporting\initalDataScripts\usp_PopulateReportConfiguration.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="SQLPerfMonDB.refactorlog" />

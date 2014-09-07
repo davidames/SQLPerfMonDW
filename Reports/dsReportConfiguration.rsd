@@ -14,7 +14,7 @@ cteMachineCols AS
 SELECT	m1.MachineName as Col1MachineName, m1.MachineId as Col1MachineId,
 		m2.MachineName as Col2MachineName, m2.MachineId as Col2MachineId
 FROM cteMacines m1  
-INNER JOIN cteMacines m2 
+LEFT JOIN cteMacines m2 
 ON m1.rowNum %2 = 1
 AND m2.rowNum = m1.rowNum + 1
 )
