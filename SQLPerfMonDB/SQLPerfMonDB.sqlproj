@@ -76,6 +76,10 @@
     <Folder Include="Reporting" />
     <Folder Include="general" />
     <Folder Include="Reporting\initalDataScripts" />
+    <Folder Include="QueryPerformance" />
+    <Folder Include="QueryPerformance\tables" />
+    <Folder Include="QueryPerformance\sprocs" />
+    <Folder Include="QueryPerformance\etl" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dw\tables\DimMachine.sql" />
@@ -116,11 +120,28 @@
     <Build Include="general\usp_LogMessage.sql" />
     <Build Include="general\usp_LogDynamicSql.sql" />
     <Build Include="Reporting\initalDataScripts\usp_PopulateReportConfiguration.sql" />
+    <Build Include="ETL\sprocs\usp_CreateDefaultEtlAction.sql" />
+    <Build Include="QueryPerformance\tables\Collection.sql" />
+    <Build Include="QueryPerformance\tables\QueryPerformance.sql" />
+    <Build Include="QueryPerformance\tables\QueryPlans.sql" />
+    <Build Include="QueryPerformance\tables\QueryTexts.sql" />
+    <Build Include="QueryPerformance\sprocs\usp_CaptureQueryPerformance.sql" />
+    <Build Include="DW\tables\DimQueryPlan.sql" />
+    <Build Include="DW\tables\DimQueryText.sql" />
+    <Build Include="DW\tables\DimDatabase.sql" />
+    <Build Include="DW\tables\FactQueryPerformance.sql" />
+    <Build Include="DW\tables\DimStatement.sql" />
+    <Build Include="DW\tables\DimCollection.sql" />
+    <Build Include="DW\tables\DimCollectionSet.sql" />
+    <Build Include="QueryPerformance\etl\usp_EtlQueryPerformance.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="SQLPerfMonDB.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SQLPerfMonDB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
   </ItemGroup>
 </Project>

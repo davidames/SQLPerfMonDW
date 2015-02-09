@@ -203,4 +203,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="EtlExecutionId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="13a89f22-4d9e-4ce0-885e-6c007867a0ec" ChangeDateTime="01/23/2015 19:41:56">
+    <Property Name="ElementName" Value="[dbo].[QueryPerformance].[examplePlanHandle]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[QueryPerformance]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ExamplePlanHandle" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="98499559-13c2-44b5-842e-a4b335fb83a7" ChangeDateTime="01/23/2015 20:07:49">
+    <Property Name="ElementName" Value="[dbo].[CollectionSet].[CollectionSetId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CollectionSet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CollectionId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="935cdfdc-b672-44a4-a92d-7c398bc27338" ChangeDateTime="01/23/2015 22:28:11">
+    <Property Name="ElementName" Value="[dbo].[FactQueryPerformance].[QueryPerformanceID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FactQueryPerformance]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="QueryPerformanceId" />
+  </Operation>
 </Operations>

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[usp_PopulateWiatTypes]
+﻿CREATE PROCEDURE [dbo].[usp_PopulateWaitTypes]
 
 AS
 
