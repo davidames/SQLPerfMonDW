@@ -1,10 +1,16 @@
 ﻿CREATE TABLE [dbo].[DimQueryText]
 (
 QueryTextId int identity CONSTRAINT PK_DimQueryText PRIMARY KEY CLUSTERED,
+<<<<<<< Updated upstream
 QueryTextFingerPrint binary(8),
+=======
+	QueryTextFingerPrint binary(8),
+>>>>>>> Stashed changes
 QueryText varchar(max) NOT NULL,
 SourceDbName sysname NULL,
 CreatedOn DateTimeOffset NOT NULL 
+
+
 )
 GO
 CREATE UNIQUE INDEX UIX_DimQueryText_QueryTextFingerPrint ON DimQueryText(QueryTextFingerPrint)

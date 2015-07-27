@@ -1,38 +1,37 @@
-﻿
 CREATE PROCEDURE [dbo].[usp_EtlQueryPerformance]
-	(
-	@OriginalCollectionId uniqueidentifier 
-	)
-	AS
-	
+    (
+    @OriginalCollectionId uniqueidentifier 
+    )
+    AS
+    
 DECLARE @CollectionId int
-DECLARE @OriginalCollectionId uniqueidentifier 
 
 
 INSERT DimMachine
 (
-			MachineName
+            MachineName
 )
-SELECT		DISTINCT c.MachineName
-FROM		Collection c
-LEFT JOIN	DimMachine m ON c.MachineName = m.MachineName
-WHERE		m.MachineId IS NULL
-			AND c.CollectionId = @OriginalCollectionId
+SELECT        DISTINCT c.MachineName
+FROM        Collection c
+LEFT JOIN    DimMachine m ON c.MachineName = m.MachineName
+WHERE        m.MachineId IS NULL
+            AND c.CollectionId = @OriginalCollectionId
  
 
 SELECT TOP 1 @CollectionId  = CollectionId
-FROM	DimCollection
+FROM    DimCollection
 WHERE OriginalCollectionId = @OriginalCollectionId
 
 
 IF @CollectionId IS NULL
 BEGIN
-	INSERT DimCollection (MachineId,  OriginalCollectionId)
-	SELECT m.MachineId, c.CollectionId
-	FROM	Collection c
-	INNER JOIN DimMachine m ON c.MachineName = m.MachineName
-	WHERE c.CollectionId = @OriginalCollectionId
-	SET @CollectionId = SCOPE_IDENTITY()
+    INSERT DimCollection (MachineId,  OriginalCollectionId)
+    SELECT m.MachineId, c.CollectionId
+    FROM    Collection c
+    INNER JOIN DimMachine m ON c.MachineName = m.MachineName
+
+    WHERE c.CollectionId = @OriginalCollectionId
+    SET @CollectionId = SCOPE_IDENTITY()
 END
 
 
@@ -58,10 +57,10 @@ OUTPUT INSERTED.QueryTextFingerPrint, INSERTED.QueryText, INSERTED.SourceDbName,
 INTO 
  DimQueryText
 (
-	QueryTextFingerPrint,
-	QueryText,
-	SourceDbName,
-	CreatedOn
+    QueryTextFingerPrint,
+    QueryText,
+    SourceDbName,
+    CreatedOn
 )
 
 UPDATE QueryTexts SET QueryText = NULL WHERE QueryText IS NOT NULL AND IsDetailRemovedDueToEtl = 1
@@ -90,10 +89,10 @@ OUTPUT INSERTED.QueryPlanFingerPrint, INSERTED.QueryPlan, INSERTED.SourceDbName,
 INTO 
  DimQueryPlan
 (
-	QueryPlanFingerPrint,
-	QueryPlan,
-	SourceDbName,
-	CreatedOn
+    QueryPlanFingerPrint,
+    QueryPlan,
+    SourceDbName,
+    CreatedOn
 )
 
 UPDATE QueryPlans SET QueryPlan = NULL WHERE QueryPlan IS NOT NULL AND IsDetailRemovedDueToEtl = 1
